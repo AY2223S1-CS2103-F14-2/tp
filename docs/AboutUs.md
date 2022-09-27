@@ -30,15 +30,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: Logic
 
-### Deon Tan
+### Johnny Doe
 
-<img src="images/deeyonn.png" width="200px">
+<img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/deeyonn)]
-[[portfolio](team/deeyonn.md)]
+[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Testing & Integration
+* Responsibilities: Data
 
 ### Jason Ciu Putra Sung
 
