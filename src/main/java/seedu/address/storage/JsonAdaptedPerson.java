@@ -127,6 +127,15 @@ class JsonAdaptedPerson {
         }
         final Gender modelGender = new Gender(gender);
 
+        if (graduationDate == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    GraduationDate.class.getSimpleName()));
+        }
+        if (!GraduationDate.isValidGraduationDate(graduationDate)) {
+            throw new IllegalValueException(GraduationDate.MESSAGE_CONSTRAINTS);
+        }
+        final GraduationDate modelGraduationDate = new GraduationDate(graduationDate);
+
         if (university == null) {
             throw new IllegalValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, University.class.getSimpleName()));
@@ -137,7 +146,8 @@ class JsonAdaptedPerson {
         final University modelUniversity = new University(university);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelGender, modelUniversity, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelGender,
+                modelGraduationDate, modelUniversity, modelTags);
     }
 
 }
