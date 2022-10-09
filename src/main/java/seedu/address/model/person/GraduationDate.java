@@ -7,26 +7,23 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the Graduation Date of a Person in the address book, as combination of a Month and Year
- * Guarantees: immutable; is valid as declared in {@link #isValidYearMonth(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidGraduationDate(String)}
  */
 public class GraduationDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Graduation Date should be of the format year-month or month-year"
+    public static final String MESSAGE_CONSTRAINTS = "Graduation Date should be of the format year-month"
         + " and adhere to the following constraints:\n"
         + "1. year should contain only numbers, and is exactly 4 digit long\n"
         + "2. month should contain only numbers, is exactly 2 digit long, and is a valid month number\n"
         + "year and month values are separated by '-'";
     public static final String YEAR_VALIDATION_REGEX = "\\d{4}";
     public static final String MONTH_VALIDATION_REGEX = "^(1[0-2]|0[1-9])$";
-    public static final String VALIDATION_REGEX_MONTH_YEAR = String.format("%s-%s",
-            MONTH_VALIDATION_REGEX, YEAR_VALIDATION_REGEX);
     public static final String VALIDATION_REGEX_YEAR_MONTH = String.format("%s-%s",
             YEAR_VALIDATION_REGEX, MONTH_VALIDATION_REGEX);
     public static final String YEAR_MONTH_PATTERN = "yyyy-MM";
-    public static final String MONTH_YEAR_PATTERN = "MM-yyyy";
     public static final String DISPLAY_DATE_FORMAT = "MMM yyyy";
 
-    public final YearMonth value;
+    public final String value;
 
     /**
      * Constructs an {@code GraduationDate}.
@@ -36,19 +33,20 @@ public class GraduationDate {
     public GraduationDate(String yearMonthString) {
         requireNonNull(yearMonthString);
         checkArgument(isValidGraduationDate(yearMonthString));
-        value = YearMonth.parse(yearMonthString, getDateFormat(yearMonthString));
+        value = yearMonthString;
     }
 
     /**
      * Returns if a given string is a valid graduation date.
      */
     public static boolean isValidGraduationDate(String test) {
-        return isPatternYearMonth(test) || isPatternMonthYear(test);
+        return isPatternYearMonth(test);
     }
 
     @Override
     public String toString() {
-        return value.format(DateTimeFormatter.ofPattern(DISPLAY_DATE_FORMAT));
+        return YearMonth.parse(value, getDateFormat(value))
+                .format(DateTimeFormatter.ofPattern(DISPLAY_DATE_FORMAT));
     }
 
     @Override
@@ -64,17 +62,7 @@ public class GraduationDate {
     }
 
     private static DateTimeFormatter getDateFormat(String yearMonthString) {
-        DateTimeFormatter dateFormat;
-        if (isPatternMonthYear(yearMonthString)) {
-            dateFormat = DateTimeFormatter.ofPattern(MONTH_YEAR_PATTERN);
-        } else {
-            dateFormat = DateTimeFormatter.ofPattern(YEAR_MONTH_PATTERN);
-        }
-        return dateFormat;
-    }
-
-    private static boolean isPatternMonthYear(String test) {
-        return test.matches(VALIDATION_REGEX_MONTH_YEAR);
+        return DateTimeFormatter.ofPattern(YEAR_MONTH_PATTERN);
     }
 
     private static boolean isPatternYearMonth(String test) {

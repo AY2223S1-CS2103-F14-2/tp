@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
+import seedu.address.model.person.GraduationDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -31,6 +32,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String gender;
+    private final String graduationDate;
     private final String university;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -43,6 +45,7 @@ class JsonAdaptedPerson {
                              @JsonProperty("email") String email,
                              @JsonProperty("address") String address,
                              @JsonProperty("gender") String gender,
+                             @JsonProperty("graduationDate") String graduationDate,
                              @JsonProperty("university") String university,
                              @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
@@ -50,6 +53,7 @@ class JsonAdaptedPerson {
         this.email = email;
         this.address = address;
         this.gender = gender;
+        this.graduationDate = graduationDate;
         this.university = university;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -65,6 +69,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         gender = source.getGender().value;
+        graduationDate = source.getGraduationDate().value;
         university = source.getUniversity().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
