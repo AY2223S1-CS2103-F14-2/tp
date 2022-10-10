@@ -59,7 +59,7 @@ public class EditPersonDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different graduationDate -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withGraduationDate(VALID_GENDER_BOB).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withGraduationDate(VALID_GRADUATION_DATE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different university -> returns false

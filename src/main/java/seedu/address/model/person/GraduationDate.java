@@ -11,16 +11,13 @@ import java.time.format.DateTimeFormatter;
  */
 public class GraduationDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Graduation Date should be of the format year-month"
+    public static final String MESSAGE_CONSTRAINTS = "Graduation Date should be of the format month-year"
         + " and adhere to the following constraints:\n"
         + "1. year should contain only numbers, and is exactly 4 digit long\n"
         + "2. month should contain only numbers, is exactly 2 digit long, and is a valid month number\n"
         + "year and month values are separated by '-'";
-    public static final String YEAR_VALIDATION_REGEX = "\\d{4}";
-    public static final String MONTH_VALIDATION_REGEX = "^(1[0-2]|0[1-9])$";
-    public static final String VALIDATION_REGEX_YEAR_MONTH = String.format("%s-%s",
-            YEAR_VALIDATION_REGEX, MONTH_VALIDATION_REGEX);
-    public static final String YEAR_MONTH_PATTERN = "yyyy-MM";
+    public static final String VALIDATION_REGEX_MONTH_YEAR = "^((1[0-2]|0[1-9])-(\\d{4}))$";
+    public static final String MONTH_YEAR_PATTERN = "MM-yyyy";
     public static final String DISPLAY_DATE_FORMAT = "MMM yyyy";
 
     public final String value;
@@ -28,7 +25,7 @@ public class GraduationDate {
     /**
      * Constructs an {@code GraduationDate}.
      *
-     * @param yearMonthString A valid graduation year month.
+     * @param yearMonthString A valid graduation month year.
      */
     public GraduationDate(String yearMonthString) {
         requireNonNull(yearMonthString);
@@ -45,7 +42,7 @@ public class GraduationDate {
 
     @Override
     public String toString() {
-        return YearMonth.parse(value, getDateFormat(value))
+        return YearMonth.parse(value, getDateFormat())
                 .format(DateTimeFormatter.ofPattern(DISPLAY_DATE_FORMAT));
     }
 
@@ -61,11 +58,11 @@ public class GraduationDate {
         return value.hashCode();
     }
 
-    private static DateTimeFormatter getDateFormat(String yearMonthString) {
-        return DateTimeFormatter.ofPattern(YEAR_MONTH_PATTERN);
+    private static DateTimeFormatter getDateFormat() {
+        return DateTimeFormatter.ofPattern(MONTH_YEAR_PATTERN);
     }
 
     private static boolean isPatternYearMonth(String test) {
-        return test.matches(VALIDATION_REGEX_YEAR_MONTH);
+        return test.matches(VALIDATION_REGEX_MONTH_YEAR);
     }
 }
