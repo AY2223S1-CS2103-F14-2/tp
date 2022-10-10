@@ -2,8 +2,6 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the Graduation Date of a Person in the address book, as combination of a Month and Year
