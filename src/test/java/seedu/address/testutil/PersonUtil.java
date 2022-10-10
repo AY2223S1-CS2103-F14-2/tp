@@ -61,8 +61,8 @@ public class PersonUtil {
             .ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         descriptor.getGender()
             .ifPresent(gender -> sb.append(PREFIX_GENDER).append(gender.value).append(" "));
-        descriptor.getGraduationDate()
-                .ifPresent(graduationDate -> sb.append(PREFIX_GRADUATION_DATE).append(graduationDate.value).append(" "));
+        descriptor.getGraduationDate().ifPresent(graduationDate -> sb.append(PREFIX_GRADUATION_DATE)
+                        .append(graduationDate.value).append(" "));
         descriptor.getUniversity()
                 .ifPresent(university -> sb.append(PREFIX_UNIVERSITY).append(university.value).append(" "));
         if (descriptor.getTags().isPresent()) {

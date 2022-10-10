@@ -40,7 +40,7 @@ public class CommandTestUtil {
     public static final String VALID_GENDER_AMY = "Female";
     public static final String VALID_GENDER_BOB = "Male";
     public static final String VALID_GRADUATION_DATE_AMY = "05-2024";
-    public static final String VALID_GRADUATION_DATE_BOB= "05-2025";
+    public static final String VALID_GRADUATION_DATE_BOB = "05-2025";
     public static final String VALID_UNIVERSITY_AMY = "NUS";
     public static final String VALID_UNIVERSITY_BOB = "NTU";
     public static final String VALID_TAG_KIV = "KIV";
