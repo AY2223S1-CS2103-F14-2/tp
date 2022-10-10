@@ -182,7 +182,7 @@ public class JsonAdaptedPersonTest {
                         INVALID_GRADUATION_DATE,
                         VALID_UNIVERSITY,
                         VALID_TAGS);
-        String expectedMessage = Gender.MESSAGE_CONSTRAINTS;
+        String expectedMessage = GraduationDate.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 

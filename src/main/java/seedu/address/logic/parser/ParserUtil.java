@@ -122,7 +122,7 @@ public class ParserUtil {
     public static GraduationDate parseGraduationDate(String graduationDate) throws ParseException {
         requireNonNull(graduationDate);
         String trimmedGraduationDate = graduationDate.trim();
-        if (!GraduationDate.isValidGraduationDate(graduationDate)) {
+        if (!GraduationDate.isValidGraduationDate(trimmedGraduationDate)) {
             throw new ParseException(GraduationDate.MESSAGE_CONSTRAINTS);
         }
         return new GraduationDate(trimmedGraduationDate);

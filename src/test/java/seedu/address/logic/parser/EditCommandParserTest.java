@@ -243,6 +243,7 @@ public class EditCommandParserTest {
             + ADDRESS_DESC_BOB
             + EMAIL_DESC_BOB
             + GENDER_DESC_BOB
+            + GRADUATION_DATE_DESC_BOB
             + UNIVERSITY_DESC_BOB
             + TAG_DESC_KIV;
 
@@ -281,6 +282,7 @@ public class EditCommandParserTest {
         descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
             .withAddress(VALID_ADDRESS_BOB)
             .withGender(VALID_GENDER_BOB)
+            .withGraduationDate(VALID_GRADUATION_DATE_BOB)
             .withUniversity(VALID_UNIVERSITY_BOB)
             .build();
         expectedCommand = new EditCommand(targetIndex, descriptor);

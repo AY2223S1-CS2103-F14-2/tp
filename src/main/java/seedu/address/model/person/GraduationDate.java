@@ -17,8 +17,8 @@ public class GraduationDate {
         + "2. month should contain only numbers, is exactly 2 digit long, and is a valid month number\n"
         + "year and month values are separated by '-'";
     public static final String VALIDATION_REGEX_MONTH_YEAR = "^((1[0-2]|0[1-9])-(\\d{4}))$";
-    public static final String MONTH_YEAR_PATTERN = "MM-yyyy";
-    public static final String DISPLAY_DATE_FORMAT = "MMM yyyy";
+    //public static final String MONTH_YEAR_PATTERN = "MM-yyyy";
+    //public static final String DISPLAY_DATE_FORMAT = "MMM yyyy";
 
     public final String value;
 
@@ -42,8 +42,7 @@ public class GraduationDate {
 
     @Override
     public String toString() {
-        return YearMonth.parse(value, getDateFormat())
-                .format(DateTimeFormatter.ofPattern(DISPLAY_DATE_FORMAT));
+        return value;
     }
 
     @Override
@@ -56,10 +55,6 @@ public class GraduationDate {
     @Override
     public int hashCode() {
         return value.hashCode();
-    }
-
-    private static DateTimeFormatter getDateFormat() {
-        return DateTimeFormatter.ofPattern(MONTH_YEAR_PATTERN);
     }
 
     private static boolean isPatternYearMonth(String test) {
